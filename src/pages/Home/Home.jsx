@@ -37,7 +37,44 @@ const Home = () => {
             </section>
 
 
-            
+            <section className="py-16 ">
+                <div className="max-w-6xl mx-auto text-center mb-10">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-3xl font-bold "
+                    >
+                        Top Instructors
+                    </motion.h2>
+                    <p className="mt-2">
+                        Learn from the industry's best mentors with years of experience.
+                    </p>
+                </div>
+
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    {instructors.slice(0,3).map((ins, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: i * 0.1 }}
+                        className=" p-6 rounded-xl shadow hover:shadow-lg transition flex flex-col items-center"
+                    >
+                        <img
+                            src={ins.photo}
+                            alt={ins.name}
+                            className="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-blue-500"
+                        />
+                        <h3 className="text-xl font-semibold ">
+                            {ins.name}
+                        </h3>
+                        {/* <p className="text-blue-600 dark:text-blue-400 mt-1"></p> */}
+                        <p className="text-blue-600 dark:text-blue-400 mt-1">Popular</p>
+                    </motion.div>
+                     ))} 
+                </div>
+            </section>
 
 
             <section className="py-12 ">
