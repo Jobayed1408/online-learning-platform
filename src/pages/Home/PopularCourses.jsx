@@ -17,7 +17,7 @@ const PopularCourses = () => {
             .finally(() => setLoading(false));
     }, [])
 
-    console.log(courses);
+    // console.log(courses);
     if (loading) return <p>Loading...</p>;
 
 

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import axiosInstance from "../../components/axiosInstance";
 
 const Register = () => {
   const { createUser, updateUserProfile, signInWithGoogle } = use(AuthContext);
@@ -35,9 +36,18 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     toast.loading("Creating user...", { id: "create-user" });
     signInWithGoogle()
-      .then((result) => {
+      .then( async (result) => {
         toast.success("User created successfully!", { id: "create-user" });
-        console.log(result.user);
+        // console.log(result.user);
+        const user = result.user;
+        const userData = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          createdAt: new Date(),
+        };
+        await axiosInstance.post('/users', userData)
+        console.log(userData)
         navigate(location.state || "/");
       })
       .catch((error) => {
@@ -98,7 +108,7 @@ const Register = () => {
           className="btn bg-white rounded-full text-black border-[#e5e5e5]"
         >
           <FaGoogle />
-          Login with Google
+          Sign In with Google
         </button>
         <p className="text-center">
           Already have an account? Please{" "}
