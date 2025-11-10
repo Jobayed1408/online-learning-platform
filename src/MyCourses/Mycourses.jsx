@@ -1,9 +1,12 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axiosInstance from "../components/axiosInstance";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Mycourses = () => {
+    
     const { user } = useContext(AuthContext);
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,6 +25,41 @@ const Mycourses = () => {
     }, [user]);
 
     if (loading) return <p>Loading...</p>;
+
+    const handleDelete =  (e, id) => {
+        e.preventDefault()
+        console.log(id);
+
+
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await axiosInstance.delete(`/course/${id}`);
+                    setCourses(prev => prev.filter(course => course._id !== id));
+                    if (res.data.success) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "This course has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    Swal.fire("Error!", "Failed to delete course.", "error");
+                  }
+                
+            }
+        });
+    }
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -46,7 +84,7 @@ const Mycourses = () => {
                             <Link to={`/update-course/${course._id}`} className=" btn-primary btn  rounded-full  hover:text-white-600 transition">
                                 Update Course
                             </Link>
-                            <Link to={`/delete-course/${course._id}`} className="btn-outline btn-primary btn  rounded-full  hover:text-white-600 transition">
+                            <Link onClick={(e) => handleDelete(e, course._id)} className="btn-outline btn-primary btn  rounded-full  hover:text-white-600 transition">
                                 Delete Course
                             </Link>
                         </div>
