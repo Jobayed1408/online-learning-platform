@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
 import axiosInstance from '../../components/axiosInstance';
 import { useNavigate, useParams } from 'react-router';
+import Loader from '../../components/Loader';
 
 const UpdateCourse = () => {
 
@@ -60,7 +61,7 @@ const UpdateCourse = () => {
     }
     // console.log(course);
 
-    if (loading) return <p>Loading course data...</p>
+    if (loading) return <Loader/>
     // if (!course) return <p>Course not found!</p>
     // console.log(course);
 

@@ -10,7 +10,6 @@ import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
   const { user, signOutUser } = use(AuthContext);
-  // console.log(user?.accessToken);
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
 

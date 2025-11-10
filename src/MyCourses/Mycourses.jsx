@@ -1,9 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axiosInstance from "../components/axiosInstance";
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+import Loader from "../components/Loader";
+// import toast from "react-hot-toast";
 
 const Mycourses = () => {
     
@@ -24,11 +25,11 @@ const Mycourses = () => {
             .finally(() => setLoading(false));
     }, [user]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loader /> 
 
     const handleDelete =  (e, id) => {
         e.preventDefault()
-        console.log(id);
+        // console.log(id);
 
 
 

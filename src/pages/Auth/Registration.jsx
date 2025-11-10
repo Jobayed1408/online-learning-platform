@@ -20,11 +20,20 @@ const Register = () => {
     toast.loading("Creating user...", { id: "create-user" });
 
     createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        updateUserProfile(displayName, photoURL);
-
+      .then(async () => {
         toast.success("User created successfully!", { id: "create-user" });
+        // console.log(result.user);
+        const userData = {
+          name: displayName,
+          email: email,
+          photo: photoURL,
+          createdAt: new Date(),
+        };
+        await axiosInstance.post('/users', userData)
+        await updateUserProfile(
+          displayName,
+          photoURL
+        )
         navigate(location.state || "/");
       })
       .catch((error) => {
@@ -36,7 +45,7 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     toast.loading("Creating user...", { id: "create-user" });
     signInWithGoogle()
-      .then( async (result) => {
+      .then(async (result) => {
         toast.success("User created successfully!", { id: "create-user" });
         // console.log(result.user);
         const user = result.user;

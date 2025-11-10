@@ -2,6 +2,8 @@ import { use, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa";
+import axiosInstance from "../../components/axiosInstance";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signInUser, signInWithGoogle } = useContext(AuthContext)
@@ -9,7 +11,7 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  // console.log(location);
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -18,14 +20,24 @@ const Login = () => {
 
     console.log(email, password);
     signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        event.target.reset();
-        navigate(location.state || "/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then( async (result) => {
+      toast.success("User created successfully!", { id: "create-user" });
+      const user = result.user;
+      const userData = {
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+        createdAt: new Date(),
+      };
+      await axiosInstance.post('/users', userData)
+      console.log(userData)
+      navigate(location.state || "/");
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.message, { id: "create-user" });
+    });
+      
   };
 
   const handleGoogleSignIn = () => {

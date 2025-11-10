@@ -1,9 +1,9 @@
 import { Link } from 'react-router';
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Mail 
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Mail
 } from 'lucide-react';
 import { LuRotate3D } from 'react-icons/lu';
 
@@ -13,61 +13,61 @@ const Footer = () => {
 
 
   return (
-    <footer className="bg-linear-to-r from-pink-500 to-red-600 py-8 px-4  rounded-xl mt-20">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div>
+    <footer className="bg-linear-to-r from-gray-700 to-gray-900 py-8 px-4 mt-20">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl ">
+        <div >
           <div className="flex items-center space-x-2 text-white">
-         <LuRotate3D size={25}/>
-      <span className="text-xl font-bold text-gray-800 dark:text-gray-200">Online Learning Platform</span>
-    </div>
-          <ul className="space-y-2 mt-4">
-            <li><Link to="/all-models" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">All Models</Link></li>
-            <li><Link to="/add-model" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Add Model</Link></li>
-            <li><Link to="/profile" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Profile</Link></li>
-            <li><Link to="/auth/login" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Login</Link></li>
+            <LuRotate3D size={25} />
+            <span className="text-xl font-bold text-white">Online Learning Platform</span>
+          </div>
+          <ul className="space-y-2 mt-4 text text-gray-200 ">
+            <li><Link to="/all-courses" className=" hover:text-blue-600">All course</Link></li>
+            <li><Link to="/add-course" className=" hover:text-blue-600">Add course</Link></li>
+            <li><Link  className=" hover:text-blue-600">Profile</Link></li>
+            <li><Link to="/auth/login" className=" hover:text-blue-600">Login</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">Resources</h3>
-          <ul className="space-y-2">
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Learning Blog</Link></li>
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Guides</Link></li>
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Poly Tips</Link></li>
-            <li><Link to="/resources" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Resources</Link></li>
+          <h3 className="text-lg font-bold mb-4 text-gray-200">Resources</h3>
+          <ul className="space-y-2 text-gray-200">
+            <li><Link to="/" className=" hover:text-blue-600">Learning Blog</Link></li>
+            <li><Link to="/" className=" hover:text-blue-600">Guides</Link></li>   
+            <li><Link to="/" className=" hover:text-blue-600">Poly Tips</Link></li>
+            <li><Link to="/" className=" hover:text-blue-600">Resources</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">Community</h3>
-          <ul className="space-y-2">
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Discussion Forums</Link></li>
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Study Groups</Link></li>
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Events & Workshops</Link></li>
-            <li><Link to="/" className="text-gray-600 dark:text-gray-200 hover:text-blue-600">Leaderboard</Link></li>
+          <h3 className="text-lg font-bold mb-4 text-gray-200">Community</h3>
+          <ul className="space-y-2 text-gray-200">
+            <li><Link to="/" className=" hover:text-blue-600">Discussion Forums</Link></li>
+            <li><Link to="/" className=" hover:text-blue-600">Study Groups</Link></li>
+            <li><Link to="/" className=" hover:text-blue-600">Events & Workshops</Link></li>
+            <li><Link to="/" className=" hover:text-blue-600">Leaderboard</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">Connect With Us</h3>
-          <div className="flex space-x-4 mb-4">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-200 hover:text-blue-700">
+          <h3 className="text-lg font-bold mb-4 text-gray-200">Connect With Us</h3>
+          <div className="flex space-x-4 mb-4 text-gray-200">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className=" hover:text-blue-700">
               <Facebook size={24} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-200 hover:text-blue-400">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className=" hover:text-blue-400">
               <Twitter size={24} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-200 hover:text-pink-600">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className=" hover:text-pink-600">
               <Instagram size={24} />
             </a>
-          
+
           </div>
           <div>
-            <a 
-              href="mailto:support@nihonlearn.com" 
-              className="flex items-center text-gray-600 dark:text-gray-200 hover:text-blue-600"
+            <a
+              href="mailto:support@elearn.com"
+              className="flex items-center text-gray-200 hover:text-blue-600"
             >
-              <Mail size={18} className="mr-2" /> support@nihonlearn.com
+              <Mail size={18} className="mr-2" /> support@elearn.com
             </a>
           </div>
         </div>
@@ -75,8 +75,8 @@ const Footer = () => {
 
 
       <div className="border-t lg:mb-0 md:mb-0 mb-20 border-[#fa7171] mt-8 pt-4 text-center">
-        <p className="text-sm text-gray-600 dark:text-gray-200">
-          © {currentYear} 3D Model Hub Learn. All Rights Reserved.
+        <p className="text-sm text-gray-200">
+          © {currentYear} E-learning platform. All Rights Reserved.
           <span className="ml-4">
             <Link to="/" className="hover:text-blue-600 mr-3">Privacy Policy</Link>
             <Link to="/" className="hover:text-blue-600">Terms of Service</Link>

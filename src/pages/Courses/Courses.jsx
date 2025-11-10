@@ -1,6 +1,7 @@
 import React, {  useEffect, useState } from "react";
 import axiosInstance from "../../components/axiosInstance";
 import { Link } from "react-router";
+import Loader from "../../components/Loader";
 
 const Courses = () => {
   const [courses, setCourses] = useState([])
@@ -40,7 +41,7 @@ console.log(courses);
   if (loading)
     return (
       <div className="flex justify-center items-center h-screen text-lg font-semibold text-blue-600">
-        Loading courses...
+        <Loader />
       </div>
     );
 

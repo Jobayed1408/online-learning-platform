@@ -9,6 +9,7 @@ import axiosInstance from '../../components/axiosInstance';
 const Home = () => {
 
     const [instructors, setInstructors] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         axiosInstance
@@ -19,7 +20,7 @@ const Home = () => {
 
             })
             .catch((err) => console.error("Error fetching course:", err))
-        // .finally(() => setLoading(false));
+        .finally(() => setLoading(false));
     }, [instructors])
     // console.log('users', users); 
 
@@ -53,7 +54,7 @@ const Home = () => {
                 </div>
 
                 <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                    {instructors.slice(0,3).map((ins, i) => (
+                    {instructors.slice(0,4).map((ins, i) => (
                     <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 30 }}
@@ -77,7 +78,7 @@ const Home = () => {
             </section>
 
 
-            <section className="py-12 ">
+            {/* <section className="py-12 ">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl font-bold mb-8 ">Top Instructors</h2>
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -92,7 +93,7 @@ const Home = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
         </div>
     );

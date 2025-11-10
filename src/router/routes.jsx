@@ -12,6 +12,8 @@ import CourseDetails from "../pages/Courses/CourseDetails";
 import UpdateCourse from "../pages/Courses/UpdateCourse";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Mycourses from "../MyCourses/Mycourses";
+import EnrolledCourses from "../EnrolledCourses/EnrolledCourses";
+import ErrorPage from "../components/ErrorPage";
 // import AddModel from "../Pages/AddModel/AddModel";
 // import ModelDetails from "../Pages/ModelDetails/ModelDetails";
 // import UpdateModel from "../Pages/UpdateModel/UpdateModel";
@@ -21,6 +23,7 @@ import Mycourses from "../MyCourses/Mycourses";
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     Component: MainLayout,
     children: [
       {
@@ -58,6 +61,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Mycourses />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/enroll-course",
+        element: (
+          <PrivateRoute>
+            <EnrolledCourses />
           </PrivateRoute>
         ),
       },

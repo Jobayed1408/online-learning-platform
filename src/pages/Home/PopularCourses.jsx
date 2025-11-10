@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../components/axiosInstance';
+import Loader from '../../components/Loader';
 
 const PopularCourses = () => {
 
@@ -18,7 +19,7 @@ const PopularCourses = () => {
     }, [])
 
     // console.log(courses);
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loader/>
 
 
     return (
