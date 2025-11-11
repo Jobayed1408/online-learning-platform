@@ -67,8 +67,8 @@ const EnrolledCourses = () => {
                     <td>{course.featured ? 'Featured' : 'Not Featured'}</td>
                     <td>
                       <div className="flex gap-3">
-                        <Link className="btn btn-sm btn-primary" to={'/my-course'}>My Course</Link>
-                        <Link className="btn btn-sm btn-outline" to={`/course-details/${course._id}`}>Details</Link>
+                        {/* <Link className="btn btn-sm btn-primary" to={'/my-course'}>My Course</Link> */}
+                        <Link className="btn btn-sm btn-primary" to={`/course-details/${course._id}`}>Details</Link>
                       </div>
                     </td>
                   </tr>

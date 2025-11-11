@@ -105,9 +105,9 @@ const Register = () => {
               className="input rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Password"
             />
-            <div>
+            {/* <div>
               <a className="link link-hover">Forgot password?</a>
-            </div>
+            </div> */}
             <button className="btn text-white mt-4 rounded-full bg-linear-to-r btn-primary">
             <FaRegistered /> Register
             </button>

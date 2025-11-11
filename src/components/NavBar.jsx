@@ -7,6 +7,7 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { MdOutlineDensitySmall } from "react-icons/md";
 import { BookA } from "lucide-react";
+import "./css/themeChange.css"
 
 const NavBar = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -24,7 +25,7 @@ const NavBar = () => {
     setTheme(checked ? "dark" : "light")
   }
   return (
-    <div className="navbar min-h-0 z-1  glass-card max-w-7xl mx-auto">
+    <div className="navbar min-h-0 z-1   glass-card max-w-7xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -56,21 +57,30 @@ const NavBar = () => {
             </li>
             <li>
               <NavLink to={"/all-courses"}>
-              <MdOutlineDensitySmall /> Courses
+                <MdOutlineDensitySmall /> Courses
               </NavLink>
             </li>
             <li>
               <NavLink to={"/dashboard"}>
-              <LuLayoutDashboard /> DashBoard
+                <LuLayoutDashboard /> DashBoard
               </NavLink>
             </li>
           </ul>
         </div>
         <Link to={"/"} className="flex text-primary items-center gap-1 text-lg md:text-3xl font-bold">
-          <BookA /> E-Learning School
+          <div className="hidden md:flex">
+            <BookA className="" /> <h1 >
+              E-Learning School
+            </h1>
+          </div>
+          
         </Link>
       </div>
-      <div className="navbar-center hidden md:flex">
+      <div className="navbar-center md:hidden flex font-bold text-primary text-lg">
+            <BookA className="" />
+            <h1>E-Learning School</h1>
+          </div>
+      <div className="md:navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-10 text-xl">
           <li>
             <NavLink to={"/"}>
@@ -80,12 +90,12 @@ const NavBar = () => {
           </li>
           <li>
             <NavLink to={"/all-courses"}>
-            <MdOutlineDensitySmall /> Courses
+              <MdOutlineDensitySmall /> Courses
             </NavLink>
           </li>
           <li>
             <NavLink to={"/dashboard"}>
-            <LuLayoutDashboard /> Dashboard 
+              <LuLayoutDashboard /> Dashboard
             </NavLink>
           </li>
         </ul>
@@ -98,11 +108,11 @@ const NavBar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-9 border-2 border-gray-300 rounded-full">
+              <div className="w-9 border-2 border-blue-600 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
                   referrerPolicy="no-referrer"
-                  src={user.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                  src={user.photoURL}
                 />
               </div>
             </div>
@@ -114,11 +124,6 @@ const NavBar = () => {
                 <li className="text-sm font-bold">{user.displayName}</li>
                 <li className="text-xs">{user.email}</li>
               </div>
-              <li className="mt-3">
-                <Link to={"/"}>
-                  <FaUser /> Profile
-                </Link>
-              </li>
 
               <li>
                 <Link to={"/my-course"}>
@@ -131,6 +136,28 @@ const NavBar = () => {
                   My Enrollment
                 </Link>
               </li>
+              {/* <div className="theme">
+                <input
+                  id="theme-toggle"
+                  className="theme__toggle"
+                  type="checkbox"
+                  onChange={(e) => handleTheme(e.target.checked)}
+                  defaultChecked={localStorage.getItem('theme') === "dark"}
+                />
+                <div className="theme__fill"></div>
+                <div className="theme__icon">
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                  <div className="theme__icon-part"></div>
+                </div>
+              </div> */}
+
 
               <input
                 onChange={(e) => handleTheme(e.target.checked)}
@@ -138,7 +165,7 @@ const NavBar = () => {
                 defaultChecked={localStorage.getItem('theme') === "dark"}
                 className="toggle" />
 
-              
+
               <li>
                 <button
                   onClick={signOutUser}
@@ -152,7 +179,7 @@ const NavBar = () => {
         ) : (
           <Link
             to={"/auth/login"}
-            className="btn rounded-full  btn-primary px-8 text-xl text-white"
+            className="flex items-center rounded-full outline p-2 md:px-8 text-sm md:text-xl text-primary hover:bg-primary hover:text-white transition-all duration-300" 
           >
             {" "}
             <IoLogIn /> Login

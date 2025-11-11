@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "../../components/axiosInstance";
 import { Link } from "react-router";
 import Loader from "../../components/Loader";
@@ -7,7 +7,10 @@ const Courses = () => {
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-console.log(courses);
+  const [selected, setSelected] = useState("All Category");
+  // const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // console.log(courses);
 
   const fetchAllCourses = () => {
     setLoading(true);
@@ -35,8 +38,36 @@ console.log(courses);
       .get(`/search?text=${searchTerm}`)
       .then((res) => setCourses(res.data))
       .catch((err) => console.error("Error searching:", err))
+      .finally(() => {
+        setLoading(false)
+
+      });
+    e.target.reset()
+  };
+
+  const handleSelect = (category) => {
+    setSelected(category);
+    setLoading(true);
+    setSearchTerm("")
+
+    if ( category === "All Category") {
+      fetchAllCourses();
+      setLoading(false);
+      
+      return;
+    }
+    console.log(selected);
+
+    axiosInstance
+      .get(`/search-category?category=${category}`)
+      .then((res) => {
+        setCourses(res.data);
+      })
+      .catch((err) => console.error("Error filtering by category:", err))
       .finally(() => setLoading(false));
   };
+  console.log(courses);
+  
 
   if (loading)
     return (
@@ -63,6 +94,37 @@ console.log(courses);
           Search
         </button>
       </form>
+
+      <div className="flex justify-center mb-10">
+        <div className="dropdown dropdown-hover">
+          <div tabIndex={0} role="button" className="btn m-1">
+            {selected}
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-md"
+          >
+            {[
+              "All Category",
+              "Web Development",
+              "App Development",
+              "Data Science",
+              "Photography",
+              "Personal Development",
+              "Other",
+            ].map((category) => (
+              <li key={category}>
+                <button
+                  onClick={() => handleSelect(category)}
+                  className="hover:bg-primary hover:text-white rounded-lg"
+                >
+                  {category}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {courses.length > 0 ? (

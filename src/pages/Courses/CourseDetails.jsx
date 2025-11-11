@@ -5,6 +5,8 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import Loader from "../../components/Loader";
+import { Badge } from "lucide-react";
+import { IoConstruct } from "react-icons/io5";
 
 const CourseDetails = () => {
     const { user } = use(AuthContext)
@@ -24,7 +26,7 @@ const CourseDetails = () => {
             .then((res) => {
                 if (res.data.success) setCourse(res.data.result);
             })
-            .catch((err) => console.error("Error fetching course:", err))
+            .catch((err) => toast.error("Error fetching course:", err))
             .finally(() => setLoading(false));
     }, [id]);
 
@@ -36,7 +38,7 @@ const CourseDetails = () => {
             if (res.data.success) {
                 toast.success("Thanks for enrollment")
             } else {
-                toast(res.data.message);
+                toast.error(res.data.message);
             }
           } catch (error) {
             console.error(error);
@@ -48,21 +50,20 @@ const CourseDetails = () => {
 
         toast.error("Update allows only for course owner")
     }
-    console.log( user);
+    // console.log( user);
 
     if (loading) return <Loader />
 
     if (!course) return <p>Course not found.</p>;
 
     return (
-        <div className="max-w-6xl mx-auto p-6 rounded-2xl shadow-xl">
-            {/* Hero Section */}
-            <div className=" from-purple-500 to-pink-500 rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center">
-                <div className="flex-1">
-                    <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
+        <div className="max-w-7xl mx-auto  md:p-6 rounded-2xl shadow-xl">
+            <div className=" from-purple-500 to-pink-500 rounded-3xl p-3 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-1 justify-center items-center">
+                    <h1 className="text-2xl md:text-4xl font-bold mb-4">{course.title}</h1>
                     <p className="text-lg mb-4">{course.category}</p>
                     <p className="mb-6 line-clamp-3">{course.description}</p>
-                    <div className="flex gap-4">
+                    <div className="flex gap-2">
                         <button onClick={(e) => { enrollCourse(e, user.email,course._id ) }} className="btn-primary btn text-white-600 font-semibold px-6 py-2 rounded-full hover:bg-gray-100 hover:text-primary transition">
                             Enroll Now
                         </button>
@@ -73,8 +74,8 @@ const CourseDetails = () => {
                                 className='btn-outline btn-primary btn px-6 py-2 rounded-full  hover:text-white-600 transition'>
                                     Update Course 
                                 </Link>
-                             )} 
-                             {course?.created_by !== user?.email && (
+                             )}
+                             {course?.created_by !== user?.email && ( 
                                 <Link onClick={(e)=> toastShow(e,user.email, course._id)}
                                 className='opacity-50  btn-outline btn-primary btn px-6 py-2 rounded-full '>
                                     Update Course 
@@ -86,37 +87,40 @@ const CourseDetails = () => {
                     <img
                         src={course.image}
                         alt={course.title}
-                        className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
+                        className="rounded-2xl shadow-lg w-full object-cover"
                     />
                 </div>
             </div>
 
             {/* Course Info Section */}
             <div className="mt-10 grid md:grid-cols-2 gap-8">
-                <div className=" p-6 rounded-2xl shadow-lg">
+                <div className=" p-2 md:p-6 flex flex-col justify-center md:justify-left items-center md:items-start rounded-2xl md:shadow-lg">
                     <h2 className="text-2xl font-bold mb-4">Course Details</h2>
                     <p><span className="font-semibold">Price:</span> ${course.price}</p>
                     <p><span className="font-semibold">Category:</span> {course.category}</p>
-                    <p><span className="font-semibold">Downloads:</span> {course.downloads}</p>
+                    {/* <p><span className="font-semibold">Downloads:</span> {course.downloads}</p> */}
                     {course.featured && (
                         <p className="mt-2 text-primary-500 font-semibold">🌟 Featured Course</p>
                     )}
                 </div>
 
-                <div className=" p-6 rounded-2xl shadow-lg">
-                    <h2 className="text-2xl font-bold mb-4">About Instructor</h2>
-                    <div className="flex items-center gap-4">
+                <div className=" p-6 rounded-2xl md:shadow-lg">
+                    <h2 className="text-2xl font-bold mb-4 text-center">About Instructor</h2>
+                    <div className="flex flex-col justify-center items-center gap-4">
                         <img
                             src={user.photoURL}
                             alt="Instructor"
-                            className="w-16 h-16 rounded-full object-cover"
+                            className="w-25 h-25 border border-primary rounded-full object-cover transition duration-300 hover:scale-105"
                         />
-                        <div>
-                            <p className="font-semibold">{user.email}</p>
-                            <p className="text-gray-500 text-sm">Instructor</p>
+                        <div className="flex flex-col items-center">
+                            <p className="font-semibold text-xl">{user.displayName}</p>
+                            <div className="flex gap-3 text-sm bg-blue-500 px-3 py-1 rounded-2xl justify-center items-center">
+                            <span><IoConstruct /></span>
+                            <p className=" text-black"> Instructor</p>
+                            </div>
                         </div>
                     </div>
-                    <p className="mt-4 text-gray-600 line-clamp-4">
+                    <p className="mt-4  line-clamp-4">
                         This course is carefully crafted to provide all the knowledge you need
                         to excel. Join and start learning today!
                     </p>
@@ -124,9 +128,9 @@ const CourseDetails = () => {
             </div>
 
             {/* Course Description Section */}
-            <div className="mt-10  p-6 rounded-2xl shadow-lg">
+            <div className="mt-10  p-6 rounded-2xl md:shadow-lg">
                 <h2 className="text-2xl font-bold mb-4">Course Description</h2>
-                <p className="text-gray-700">{course.description}</p>
+                <p className="">{course.description}</p>
             </div>
         </div>
     );
