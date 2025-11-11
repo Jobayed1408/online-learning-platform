@@ -49,7 +49,7 @@ const UpdateCourse = () => {
 
             if (res.data.success) {
                 toast.success("Course updated successfully!");
-                navigate("/");
+                navigate("/all-courses");
             } else {
                 toast.error(res.data.message || "Failed to update course!");
             }
@@ -163,7 +163,7 @@ const UpdateCourse = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
+                        className="btn-primary btn px-6 py-2 rounded-full  hover:text-white-600 btn-outline  transition w-full text-white mt-6  " 
                     >
                         Update Course
                     </button>

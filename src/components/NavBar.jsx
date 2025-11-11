@@ -25,7 +25,7 @@ const NavBar = () => {
     setTheme(checked ? "dark" : "light")
   }
   return (
-    <div className="navbar min-h-0 z-1   glass-card max-w-7xl mx-auto">
+    <div className="navbar min-h-0 z-1 py-10 glass-card max-w-7xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -65,23 +65,37 @@ const NavBar = () => {
                 <LuLayoutDashboard /> DashBoard
               </NavLink>
             </li>
+            {
+              !user && (
+                <li>
+              <div className="flex  ">
+                <p>  Theme</p>
+                <input
+                  onChange={(e) => handleTheme(e.target.checked)}
+                  type="checkbox"
+                  defaultChecked={localStorage.getItem('theme') === "dark"}
+                  className="toggle" />
+              </div>
+            </li>
+              )
+            }
           </ul>
         </div>
         <Link to={"/"} className="flex text-primary items-center gap-1 text-lg md:text-3xl font-bold">
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center">
             <BookA className="" /> <h1 >
               E-Learning School
             </h1>
           </div>
-          
+
         </Link>
       </div>
-      <div className="navbar-center md:hidden flex font-bold text-primary text-lg">
-            <BookA className="" />
-            <h1>E-Learning School</h1>
-          </div>
+      <div className="navbar-center md:hidden items-center flex font-bold text-primary text-lg">
+        <BookA className="" />
+        <h1>E-Learning School</h1>
+      </div>
       <div className="md:navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1 gap-10 text-xl">
+        <ul className="menu menu-horizontal px-1 lg:gap-5  text-xl">
           <li>
             <NavLink to={"/"}>
               <GoHomeFill />
@@ -98,6 +112,20 @@ const NavBar = () => {
               <LuLayoutDashboard /> Dashboard
             </NavLink>
           </li>
+          {/* {
+              !user && (
+                <li>
+              <div className="flex  ">
+                <p>  Theme</p>
+                <input
+                  onChange={(e) => handleTheme(e.target.checked)}
+                  type="checkbox"
+                  defaultChecked={localStorage.getItem('theme') === "dark"}
+                  className="toggle" />
+              </div>
+            </li>
+              )
+            } */}
         </ul>
       </div>
       <div className="navbar-end gap-3">
@@ -177,13 +205,23 @@ const NavBar = () => {
             </ul>
           </div>
         ) : (
-          <Link
-            to={"/auth/login"}
-            className="flex items-center rounded-full outline p-2 md:px-8 text-sm md:text-xl text-primary hover:bg-primary hover:text-white transition-all duration-300" 
-          >
-            {" "}
-            <IoLogIn /> Login
-          </Link>
+          <div className="flex items-center gap-1">
+            <div className="hidden md:flex flex-col ">
+              <p>Theme</p>
+            <input
+                onChange={(e) => handleTheme(e.target.checked)}
+                type="checkbox"
+                defaultChecked={localStorage.getItem('theme') === "dark"}
+                className="toggle" />
+            </div>
+            <Link
+              to={"/auth/login"}
+              className="flex items-center rounded-full outline p-2 md:px-8 text-sm md:text-xl text-primary hover:bg-primary hover:text-white transition-all duration-300"
+            >
+              {" "}
+              <IoLogIn /> Login
+            </Link>
+          </div>
         )}
       </div>
     </div>

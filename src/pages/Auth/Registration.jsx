@@ -19,11 +19,20 @@ const Register = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must have at least 6 characters, 1 uppercase, and 1 lowercase letter!"
+      );
+      return;
+    }
+
     toast.loading("Creating user...", { id: "create-user" });
 
     createUser(email, password)
       .then(async () => {
-        toast.success("User created successfully!", { id: "create-user" });
+        toast.success("User created successfully!", { id: "create-userde" });
         // console.log(result.user);
         const userData = {
           name: displayName,

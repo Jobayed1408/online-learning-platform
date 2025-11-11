@@ -77,7 +77,7 @@ const Footer = () => {
       </div>
 
 
-      <div className="border-t lg:mb-0 md:mb-0 mb-20 border-[#fa7171] mt-8 pt-4 text-center">
+      <div className="border-t lg:mb-0 md:mb-0 mb-20 border-blue-700 mt-8 pt-4 text-center">
         <p className="text-sm text-gray-200">
           © {currentYear} E-learning platform. All Rights Reserved.
           <span className="ml-4">

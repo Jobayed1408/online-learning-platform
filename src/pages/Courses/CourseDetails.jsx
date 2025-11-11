@@ -5,7 +5,6 @@ import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import Loader from "../../components/Loader";
-import { Badge } from "lucide-react";
 import { IoConstruct } from "react-icons/io5";
 
 const CourseDetails = () => {
@@ -31,7 +30,7 @@ const CourseDetails = () => {
     }, [id]);
 
     const enrollCourse = async(e, userEmail, courseId) => {
-        console.log('id ',courseId)
+        // console.log('id ',courseId)
         e.preventDefault()
         try {
             const res = await axiosInstance.post("/enroll", { userEmail, courseId });
@@ -41,8 +40,8 @@ const CourseDetails = () => {
                 toast.error(res.data.message);
             }
           } catch (error) {
-            console.error(error);
-            toast.error("Enrollment failed");
+            console.error(error.message);
+            toast.error("Maybe you are not owner of ths course...");
           }
     }
     const toastShow = e => {

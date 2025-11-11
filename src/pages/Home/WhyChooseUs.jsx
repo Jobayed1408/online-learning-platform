@@ -45,7 +45,7 @@ const WhyChooseUs = () => {
         className="text-center mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold ">Why Choose Us</h2>
-        <p className=" mt-3 max-w-2xl mx-auto">
+        <p className=" mt-3 max-w-2xl mx-auto p-2">
           Discover why thousands of learners choose us for their online learning journey.
         </p>
       </motion.div>
