@@ -1,9 +1,11 @@
 import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { FaGoogle } from "react-icons/fa6";
+import { FaGoogle, FaRegistered } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import axiosInstance from "../../components/axiosInstance";
+import { FcGoogle } from "react-icons/fc";
+import { BiRegistered } from "react-icons/bi";
 
 const Register = () => {
   const { createUser, updateUserProfile, signInWithGoogle } = use(AuthContext);
@@ -106,8 +108,8 @@ const Register = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
-              Register
+            <button className="btn text-white mt-4 rounded-full bg-linear-to-r btn-primary">
+            <FaRegistered /> Register
             </button>
           </fieldset>
         </form>
@@ -116,7 +118,7 @@ const Register = () => {
           onClick={handleGoogleSignIn}
           className="btn bg-white rounded-full text-black border-[#e5e5e5]"
         >
-          <FaGoogle />
+          <FcGoogle />
           Sign In with Google
         </button>
         <p className="text-center">

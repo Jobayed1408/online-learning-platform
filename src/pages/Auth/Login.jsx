@@ -4,6 +4,9 @@ import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa";
 import axiosInstance from "../../components/axiosInstance";
 import toast from "react-hot-toast";
+import { LogInIcon } from "lucide-react";
+import { BsGoogle } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { signInUser, signInWithGoogle } = useContext(AuthContext)
@@ -76,8 +79,8 @@ const Login = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
-              Login
+            <button className="btn text-white mt-4 rounded-full btn-primary">
+            <LogInIcon size={20} /> Login
             </button>
           </fieldset>
         </form>
@@ -86,7 +89,7 @@ const Login = () => {
           onClick={handleGoogleSignIn}
           className="btn bg-white rounded-full text-black border-[#e5e5e5]"
         >
-          <FaGoogle />
+          <FcGoogle />
           Login with Google
         </button>
         <p className="text-center">

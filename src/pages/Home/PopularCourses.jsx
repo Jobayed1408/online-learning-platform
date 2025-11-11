@@ -24,7 +24,7 @@ const PopularCourses = () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
-            {courses.map((course) => (
+            {courses.slice(0,6).map((course) => (
                 <div key={course._id} className="border rounded-lg p-4 shadow hover:shadow-lg transition">
                     <img src={course.image} alt={course.title} className="w-full h-40 object-cover rounded" />
                     <h3 className="text-xl font-bold mt-2">{course.title}</h3>

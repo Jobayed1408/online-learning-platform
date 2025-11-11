@@ -72,6 +72,7 @@ const Mycourses = () => {
                         key={course._id}
                         className="border rounded-lg p-4 shadow hover:shadow-lg transition"
                     >
+                        
                         <img
                             src={course.image}
                             alt={course.title}

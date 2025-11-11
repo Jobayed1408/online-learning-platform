@@ -1,12 +1,12 @@
 import { Link, NavLink } from "react-router";
-import { IoLogoModelS } from "react-icons/io";
 import { GoHomeFill } from "react-icons/go";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
-import { LuRotate3D } from "react-icons/lu";
-import { ImBoxAdd } from "react-icons/im";
+import { LuLayoutDashboard } from "react-icons/lu";
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { MdOutlineDensitySmall } from "react-icons/md";
+import { BookA } from "lucide-react";
 
 const NavBar = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -24,7 +24,7 @@ const NavBar = () => {
     setTheme(checked ? "dark" : "light")
   }
   return (
-    <div className="navbar min-h-0 z-1  glass-card max-w-7xl">
+    <div className="navbar min-h-0 z-1  glass-card max-w-7xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -56,22 +56,22 @@ const NavBar = () => {
             </li>
             <li>
               <NavLink to={"/all-courses"}>
-                <IoLogoModelS /> Courses
+              <MdOutlineDensitySmall /> Courses
               </NavLink>
             </li>
             <li>
               <NavLink to={"/dashboard"}>
-                <IoLogoModelS /> DashBoard
+              <LuLayoutDashboard /> DashBoard
               </NavLink>
             </li>
           </ul>
         </div>
-        <Link to={"/"} className="flex items-center gap-1 text-xl font-bold">
-          <LuRotate3D /> Online Learning Platform
+        <Link to={"/"} className="flex text-primary items-center gap-1 text-lg md:text-3xl font-bold">
+          <BookA /> E-Learning School
         </Link>
       </div>
       <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1 gap-10">
+        <ul className="menu menu-horizontal px-1 gap-10 text-xl">
           <li>
             <NavLink to={"/"}>
               <GoHomeFill />
@@ -80,12 +80,12 @@ const NavBar = () => {
           </li>
           <li>
             <NavLink to={"/all-courses"}>
-              <IoLogoModelS /> Courses
+            <MdOutlineDensitySmall /> Courses
             </NavLink>
           </li>
           <li>
             <NavLink to={"/dashboard"}>
-              <ImBoxAdd /> Dashboard 
+            <LuLayoutDashboard /> Dashboard 
             </NavLink>
           </li>
         </ul>
@@ -115,20 +115,20 @@ const NavBar = () => {
                 <li className="text-xs">{user.email}</li>
               </div>
               <li className="mt-3">
-                <Link to={"/profile"}>
+                <Link to={"/"}>
                   <FaUser /> Profile
                 </Link>
               </li>
 
               <li>
-                <Link to={"/my-models"}>
-                  My Models
+                <Link to={"/my-course"}>
+                  My Courses
                 </Link>
               </li>
 
               <li >
-                <Link to={"/my-downloads"}>
-                  My Downloads
+                <Link to={"/enroll-course"}>
+                  My Enrollment
                 </Link>
               </li>
 
@@ -142,7 +142,7 @@ const NavBar = () => {
               <li>
                 <button
                   onClick={signOutUser}
-                  className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+                  className="btn btn-xs text-left btn-primary mt-2 text-white"
                 >
                   <IoLogOut /> Logout
                 </button>
@@ -152,7 +152,7 @@ const NavBar = () => {
         ) : (
           <Link
             to={"/auth/login"}
-            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+            className="btn rounded-full  btn-primary px-8 text-xl text-white"
           >
             {" "}
             <IoLogIn /> Login

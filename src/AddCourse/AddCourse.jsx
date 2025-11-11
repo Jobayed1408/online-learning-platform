@@ -5,6 +5,8 @@ import axiosInstance from "../components/axiosInstance";
 
 const AddCourse = () => {
     const { user } = use(AuthContext)
+    console.log(user);
+    
     const [featured, setFeatured] = useState(false);
 
     const handleSubmit = async(e) => {
@@ -21,7 +23,7 @@ const AddCourse = () => {
             downloads: 0,
             created_by: user.email
         }
-        console.log(formData);
+        // console.log(formData);
         try {
             const res = await axiosInstance.post("/courses", formData);
             if (res.data.success) {
@@ -44,9 +46,47 @@ const AddCourse = () => {
                 <h2 className="text-2xl font-bold text-center mb-6">Add New Course</h2>
                 {/* <form className="space-y-4"> */}
                 <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Instructor's Name */}
+                    <div>
+                        <label className="label font-medium">Instructor's Name</label>
+                        <input
+                            type="text"
+                            defaultValue={user.displayName} 
+                            required
+                            readOnly
+                            className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+                            
+                        />
+                    </div>
+
+                    {/* Instructor's Email */}
+                    <div>
+                        <label className="label font-medium">Instructor's Email</label>
+                        <input
+                            type="text"
+                            defaultValue={user.email}
+                            required
+                            readOnly
+                            className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+                        />
+                    </div>
+
+
+                    {/* Instructor's Image */}
+                    <div>
+                        <label className="label font-medium">Instructor's Image</label>
+                        <input
+                            defaultValue={user.photoURL}
+                            required
+                            readOnly
+                            className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+                        />
+                    </div>
+
+
                     {/* Name Field */}
                     <div>
-                        <label className="label font-medium">Title</label>
+                        <label className="label font-medium">Course Title</label>
                         <input
                             type="text"
                             name="name"
@@ -91,7 +131,7 @@ const AddCourse = () => {
 
                     {/* Thumbnail URL */}
                     <div>
-                        <label className="label font-medium">Image URL</label>
+                        <label className="label font-medium">Course Banner</label>
                         <input
                             type="url"
                             name="thumbnail"
