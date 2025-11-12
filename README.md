@@ -1,6 +1,6 @@
 # SkillHub - Learn Smarter, Grow Faster
 
-**Live Site:** [(https://skill-hub-clients.netlify.app/all-courses)]  
+**Live Site:** [(https://skill-hub-clients-0.netlify.app/)]  
 
 SkillHub is a full-stack online learning platform where users can explore, enroll in, and manage courses while instructors can create and manage their own courses. The platform focuses on smooth interaction, intuitive UI, and efficient data management.
 
