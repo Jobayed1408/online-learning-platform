@@ -30,13 +30,18 @@ const Courses = () => {
 
     if (!searchTerm.trim()) {
       fetchAllCourses();
+      setSelected("All Category")
       return;
     }
 
     setLoading(true);
     axiosInstance
       .get(`/search?text=${searchTerm}`)
-      .then((res) => setCourses(res.data))
+      .then((res) => {
+        setCourses(res.data)
+        setSelected("All Category")
+
+      })
       .catch((err) => console.error("Error searching:", err))
       .finally(() => {
         setLoading(false)
@@ -50,10 +55,10 @@ const Courses = () => {
     setLoading(true);
     setSearchTerm("")
 
-    if ( category === "All Category") {
+    if (category === "All Category") {
       fetchAllCourses();
       setLoading(false);
-      
+
       return;
     }
     console.log(selected);
@@ -67,7 +72,7 @@ const Courses = () => {
       .finally(() => setLoading(false));
   };
   console.log(courses);
-  
+
 
   if (loading)
     return (

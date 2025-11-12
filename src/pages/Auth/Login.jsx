@@ -24,7 +24,7 @@ const Login = () => {
     console.log(email, password);
     signInUser(email, password)
     .then( async (result) => {
-      toast.success("User created successfully!", { id: "create-user" });
+      toast.success("login successfully!");
       const user = result.user;
       const userData = {
         name: user.displayName,
@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
+    <div className="card bg-base-100 w-full mx-auto m-1 max-w-sm shrink-0 shadow-2xl border border-gray-200">
       <div className="card-body">
         <h1 className="text-3xl font-bold text-center">Login</h1>
         <form onSubmit={handleLogIn}>

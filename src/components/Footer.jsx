@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl ">
         <div >
           <div className="flex items-center space-x-2 text-xl font-bold text-primary ">
-            <BookAIcon size={25} /> E-Learning School
+            <BookAIcon size={25} /> Skill-HUB
 
             {/* <span className="text-xl ">Online Learning Platform</span> */}
           </div>

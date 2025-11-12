@@ -171,7 +171,7 @@ const AddCourse = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="btn btn-primary w-full text-white mt-6 rounded-full bg-linear-to-r  hover:from-600 hover:to-red-700"
+                        className="btn btn-primary w-full text-white mt-6 rounded-full "
                     >
                         Add Course
                     </button>

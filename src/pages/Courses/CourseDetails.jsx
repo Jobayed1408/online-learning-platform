@@ -58,10 +58,10 @@ const CourseDetails = () => {
     return (
         <div className="max-w-7xl mx-auto  md:p-6 rounded-2xl shadow-xl">
             <div className=" from-purple-500 to-pink-500 rounded-3xl p-3 md:p-8 flex flex-col md:flex-row gap-8 items-center">
-                <div className="flex-1 justify-center items-center">
-                    <h1 className="text-2xl md:text-4xl font-bold mb-4">{course.title}</h1>
-                    <p className="text-lg mb-4">{course.category}</p>
-                    <p className="mb-6 line-clamp-3">{course.description}</p>
+                <div className="flex-1 flex flex-col justify-center md:items-start items-center">
+                    <h1 className="text-2xl text-center md:text-left md:text-4xl font-bold mb-4">{course.title}</h1>
+                    <p className="text-lg text-center md:text-left mb-4">{course.category}</p>
+                    <p className="mb-6 text-center md:text-left line-clamp-3">{course.description}</p>
                     <div className="flex gap-2">
                         <button onClick={(e) => { enrollCourse(e, user.email,course._id ) }} className="btn-primary btn text-white-600 font-semibold px-6 py-2 rounded-full hover:bg-gray-100 hover:text-primary transition">
                             Enroll Now

@@ -84,15 +84,15 @@ const NavBar = () => {
         <Link to={"/"} className="flex text-primary items-center gap-1 text-lg md:text-3xl font-bold">
           <div className="hidden md:flex items-center">
             <BookA className="" /> <h1 >
-              E-Learning School
+              Skill-HUB
             </h1>
           </div>
 
         </Link>
       </div>
-      <div className="navbar-center md:hidden items-center flex font-bold text-primary text-lg">
+      <div className="navbar-center md:hidden items-center flex font-bold text-primary text-2xl">
         <BookA className="" />
-        <h1>E-Learning School</h1>
+        <h1>Skill-HUB</h1>
       </div>
       <div className="md:navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 lg:gap-5  text-xl">

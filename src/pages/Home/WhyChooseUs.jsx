@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
               key={i}
               variants={item}
               whileHover={{ scale: 1.02 }}
-              className=" rounded-xl p-3 shadow hover:shadow-md transition"
+              className=" rounded-xl p-3 border border-primary shadow hover:shadow-md transition"
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold ">{faq.q}</h3>
